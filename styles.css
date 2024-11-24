@@ -10,7 +10,6 @@ body {
   justify-content: center; 
   align-items: center;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 /* Container Styling */
@@ -147,4 +146,22 @@ body.dark-mode button {
   button {
     font-size: 0.9rem;
   }
+}
+#filters button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #2575fc;
+  color: white;
+}
+
+#filters button:hover {
+  background: #6a11cb;
+}
+
+#filters button.active {
+  background: #ffa41b;
+  color: black;
 }

@@ -49,3 +49,35 @@ function addTask(task) {
 document.getElementById('toggle-theme').addEventListener('click', function () {
   document.body.classList.toggle('dark-mode');
 });
+document.getElementById('all-tasks').addEventListener('click', function () {
+  filterTasks('all');
+});
+
+document.getElementById('completed-tasks').addEventListener('click', function () {
+  filterTasks('completed');
+});
+
+document.getElementById('pending-tasks').addEventListener('click', function () {
+  filterTasks('pending');
+});
+function filterTasks(filter) {
+  const tasks = document.querySelectorAll('.task-item'); // Select all task items
+  tasks.forEach(task => {
+    const isCompleted = task.querySelector('.check-task').checked; // Check task status
+
+    if (filter === 'completed' && !isCompleted) {
+      task.style.display = 'none'; // Hide pending tasks
+    } else if (filter === 'pending' && isCompleted) {
+      task.style.display = 'none'; // Hide completed tasks
+    } else {
+      task.style.display = ''; // Show all tasks
+    }
+  });
+}
+const filterButtons = document.querySelectorAll('#filters button');
+filterButtons.forEach(button => {
+  button.addEventListener('click', function () {
+    filterButtons.forEach(btn => btn.classList.remove('active')); // Remove active class from all buttons
+    this.classList.add('active'); // Add active class to the clicked button
+  });
+});
